@@ -695,6 +695,7 @@ export class UserFollowingService implements OnModuleInit {
 		if (!request) return;
 
 		await this.followRequestsRepository.delete(request.id);
+		this.cacheService.userFollowingsCache.refresh(follower.id);
 	}
 
 	/**
